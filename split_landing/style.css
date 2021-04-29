@@ -1,0 +1,120 @@
+:root {
+  --left-color: rgba(87, 84, 236, 0.7);
+  --left-hover-color: rgba(87, 84, 236, 1);
+  --right-color: rgba(58, 58, 58, 0.7);
+  --right-hover-color: rgba(16, 124, 16, 1);
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 1s;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+h1 {
+  color: aliceblue;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.container {
+  /* display: flex; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* split left-right box */
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.split.left {
+  left: 0;
+  background: url("https://media3.s-nbcnews.com/i/newscms/2020_24/3388621/200612-sony-ps5-mc-1349_f95a0c77ae63fea4320f08aae187d777.JPG");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.split.right {
+  right: 0;
+  background: url("https://media.wired.com/photos/5fa5dc3dba670daaf8e97a8d/master/pass/games_gear_series-x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* add background color  */
+.split.left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--left-color);
+}
+.split.right::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--right-color);
+}
+
+/* transition animation */
+.split.left,
+.split.right {
+  transition: ease-in-out var(--speed);
+}
+
+/* button */
+.split .btn {
+  color: aliceblue;
+  padding: 15px 20px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  border: solid 1px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.left .btn:hover {
+  background-color: var(--left-hover-color);
+  border-color: var(--left-hover-color);
+}
+.right .btn:hover {
+  background-color: var(--right-hover-color);
+  border-color: var(--right-hover-color);
+}
+
+/* hover size */
+.hover-left .left {
+  width: var(--hover-width);
+}
+.hover-left .right {
+  width: var(--other-width);
+}
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+.hover-right .left {
+  width: var(--other-width);
+}
+
+@media (max-width: 800px) {
+  h1 {
+    top: 25%;
+    font-size: 1.5rem;
+  }
+}
